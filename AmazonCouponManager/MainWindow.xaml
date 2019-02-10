@@ -5,8 +5,42 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AmazonCouponManager"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="350" Width="712.91">
+    <Window.Resources>
+        <local:DateToImageSourceConverter x:Key="dateToImageSourceConverter" />
+        <local:StringToDateConverter x:Key="stringToDateConverter" />
+        <HierarchicalDataTemplate ItemsSource="{Binding Path=Elements}" x:Key="NodeTemplate">
+            <Grid>
+                <StackPanel Orientation="Horizontal">
+                    <Image Width="10">
+                        <Image.Style>
+                            <Style TargetType="{x:Type Image}">
+                                <Setter Property="Source" Value="{Binding Converter={StaticResource dateToImageSourceConverter}}" />
+                            </Style>
+                        </Image.Style>
+                    </Image>
+                    <TextBlock Text="{Binding Path=Name}"/>
+                    <TextBlock>
+                        <TextBlock.Style>
+                            <Style>
+                                <Setter Property="TextBlock.Text" Value="{Binding Converter={StaticResource stringToDateConverter}}" />
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                </StackPanel>
+            </Grid>
+        </HierarchicalDataTemplate>
+    </Window.Resources>
     <Grid>
-        
+        <Button x:Name="btnGetUrl" Content="GetURL" HorizontalAlignment="Left" Margin="10,71,0,0" VerticalAlignment="Top" Width="75" Click="btnGetUrl_Click"/>
+        <TextBox x:Name="txtUrl" Margin="10,96,10,0" TextWrapping="Wrap" MaxLines="1" IsUndoEnabled="True" Height="66" VerticalAlignment="Top"/>
+        <DatePicker x:Name="datePicker" Margin="118,42,0,0" Height="24" VerticalAlignment="Top" HorizontalAlignment="Left" Width="149"/>
+        <Label Content="Date de fin :" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnAdd" Content="Ajouter" Margin="0,71,10,0" VerticalAlignment="Top" Click="btnAdd_Click" HorizontalAlignment="Right" Width="75"/>
+        <Label Content="Nom du produit : " Margin="10,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="105"/>
+        <TextBox x:Name="txtName" Height="23" Margin="118,14,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TreeView x:Name="tvXml" Grid.Column="0" ItemsSource="{Binding Path=Root.Elements}" ItemTemplate="{StaticResource ResourceKey=NodeTemplate}" Height="142" Margin="10,167,106,0" VerticalAlignment="Top"/>
+        <Label Content="Valeur : " HorizontalAlignment="Left" Margin="272,42,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtVal" HorizontalAlignment="Left" Height="23" Margin="329,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
     </Grid>
 </Window>

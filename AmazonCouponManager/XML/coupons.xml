@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Items>
+  <Rose url="amz.fr/rose">
+    <coupon date_fin="01/01/2019" value="10%"/>
+    <coupon date_fin="01/01/2018" value="20%"/>
+    <coupon date_fin="21/03/2019" value="30%"/>
+  </Rose>
+  <Balance url="amz.fr/Balance">
+    <coupon date_fin="01/01/2019" value="10%"/>
+    <coupon date_fin="01/01/2018" value="20%"/>
+    <coupon date_fin="21/03/2019" value="30%"/>
+  </Balance>
+</Items>
